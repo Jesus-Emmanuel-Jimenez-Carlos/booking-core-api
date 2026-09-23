@@ -10,6 +10,7 @@ A generic, high-performance, domain-driven RESTful scheduling engine designed to
 Built with **Java 17**, **Spring Boot 3**, and **Spring Data JPA**, **BookingCore API** delivers enterprise-grade concurrency control, sub-millisecond slot conflict detection, dynamic availability calculation, and unified error handling compliant with RFC-7807 standards.
 
 
+
 💡 What Problem Does BookingCore Solve?
 Building a reliable reservation system is notoriously complex. Unhandled race conditions lead to double-bookings, timezone mismatches disrupt schedules, and rigid database schemas make adapting to varied service types difficult.
 BookingCore API addresses these core challenges with:
@@ -31,6 +32,7 @@ Multi-Tenant Scalability: Standardized domain abstractions accommodate diverse p
 Clear Developer UX: Fully documented OpenAPI 3 / Swagger interface with localized, structured error responses.
 🏗️ Architecture & Design Patterns
 The system adheres strictly to Clean Architecture and Domain-Driven Design (DDD) principles to promote maintainability and testability:
+
 src/main/java/com/bookingcore/
 ├── domain/                      # Core Business Logic & Models (Framework Agnostic)
 │   ├── model/                   # Rich Domain Entities (Appointment, TimeSlot)
@@ -41,6 +43,8 @@ src/main/java/com/bookingcore/
     ├── config/                  # Framework & OpenAPI Configuration
     ├── persistence/             # Spring Data JPA Repositories
     └── web/                     # REST Controllers, DTOs & Exception Handlers
+
+
 ⚙️ Tech Stack & Dependencies
 Category	Technology	Purpose
 Language	Java 17 (LTS)	Modern syntax, pattern matching, and performance improvements
@@ -58,7 +62,8 @@ providerId (long, required): Target service provider ID.
 serviceId (long, required): Service type identifier (defines duration).
 date (ISO-8601 Date, required): e.g., 2026-10-15.
 Sample Response (200 OK):
-JSON
+
+
 [
   {
     "startTime": "2026-10-15T09:00:00",
@@ -71,12 +76,15 @@ JSON
     "available": true
   }
 ]
+
+
 2. Schedule an Appointment
 Reserves a time slot for a customer after validating availability and preventing collisions.
 URL: POST /api/v1/appointments
 Headers: Content-Type: application/json
 Sample Request Payload:
-JSON
+
+
 {
   "customerId": 101,
   "providerId": 12,
@@ -84,8 +92,11 @@ JSON
   "startTime": "2026-10-15T09:00:00",
   "notes": "Initial consultation regarding cloud migration strategy."
 }
+
+
 Sample Response (201 Created):
-JSON
+
+
 {
   "id": 1,
   "customerId": 101,
@@ -96,6 +107,8 @@ JSON
   "status": "SCHEDULED",
   "createdAt": "2026-09-22T20:45:00"
 }
+
+
 🛠️ How to Clone & Run Locally
 Prerequisites
 JDK 17 or higher
@@ -103,10 +116,18 @@ Apache Maven 3.8+
 Git
 Quickstart Guide
 Clone the Repository:
-Bash
+
 git clone [https://github.com/tu-usuario/booking-core-api.git](https://github.com/tu-usuario/booking-core-api.git)
 cd booking-core-api
+
+
 Build and Run the Application:
+
+
+mvn clean package
+mvn spring-boot:run
+
+
 Bash
 mvn clean package
 mvn spring-boot:run
@@ -122,3 +143,14 @@ Password: (leave blank)
 Jesús Emmanuel Jiménez Carlos
 Software Engineer & IT Infrastructure Consultant
 Specializations: Cloud Infrastructure, Custom Software Development, and Systems Architecture.
+
+
+
+
+
+
+
+
+
+
+
