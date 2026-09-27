@@ -9,9 +9,14 @@ Una solución empresarial diseñada para eliminar los encimamientos de citas, au
 
 💡 ¿Qué es BookingCore API y qué problema resuelve?
 Imaginen intentar coordinar las citas de una clínica médica, un despacho legal o una cadena de salones de belleza donde cientos de personas intentan agendar al mismo tiempo. Sin un sistema sólido, ocurren los peores dolores de cabeza de cualquier negocio: empalmes de horarios (doble reservación), agendas desorganizadas y clientes insatisfechos.
+
 BookingCore API es un motor central de reservaciones listo para integrarse a cualquier plataforma web o móvil. Funciona como un "cerebro automatizado" que calcula en milisegundos qué horarios están libres y asegura que jamás existan dos personas agendadas a la misma hora para el mismo especialista.
+
+
 ✨ ¿Qué hace a BookingCore diferente?
 🛡️ Cero Doble Cita (Garantizado)
+
+
 Un algoritmo matemático de intersección de tiempo valida cada segundo solicitado. Si un horario ya fue tomado (incluso por un milisegundo de diferencia), el sistema lo bloquea al instante.
 
 ⚡ Generación Dinámica de Horarios
@@ -42,16 +47,20 @@ A
  >Start 
 B
 ​	
- ): Algoritmo de alta velocidad para detección de colisiones de agenda.
+ ): 
+ Algoritmo de alta velocidad para detección de colisiones de agenda.
+
 Control de Excepciones Estandarizado (RFC-7807): Los errores no rompen la aplicación; devuelven mensajes claros y estructurados para el equipo frontend.
+
 Persistencia Indexada: Consultas optimizadas a nivel de base de datos para responder en tiempo récord.
-⚙️ Tecnologías Utilizadas
+ Tecnologías Utilizadas
 Lenguaje: Java 17 (LTS)
 Framework Principal: Spring Boot 3.2.3
 Acceso a Datos: Spring Data JPA / Hibernate
 Base de Datos: H2 Database (En memoria para pruebas rápidas)
 Documentación Viva: OpenAPI 3 & Swagger UI
-🔌 Explora la API
+
+ Explora la API
 La API cuenta con puntos de acceso limpios y estructurados:
 1. Consultar horarios disponibles
 GET /api/v1/availability?providerId=1&serviceId=1&date=2026-10-15
@@ -59,6 +68,7 @@ GET /api/v1/availability?providerId=1&serviceId=1&date=2026-10-15
 Devuelve la lista exacta de ventanas de tiempo libres para un especialista en un día específico.
 2. Agendar una nueva cita
 POST /api/v1/appointments
+
 
 Ejemplo de solicitud:
 JSON
@@ -69,27 +79,36 @@ JSON
   "startTime": "2026-10-15T09:00:00",
   "notes": "Consultoría sobre migración a la nube."
 }
-🚀 ¿Cómo probar la aplicación en tu computadora?
+
+ 
+ ¿Cómo probar la aplicación en tu computadora?
 ¡Probar el proyecto es sumamente sencillo! Sigue estos pasos:
+
 Requisitos previos
 Java 17 o superior instalado.
 Git y Apache Maven.
+
 Pasos para ejecutar:
 Clona este repositorio:
 Bash
 git clone [https://github.com/tu-usuario/booking-core-api.git](https://github.com/tu-usuario/booking-core-api.git)
 cd booking-core-api
+
 Compila y ejecuta la aplicación:
 Bash
 mvn clean package
 mvn spring-boot:run
+
+
 ¡Interactúa con la API visualmente!
 Una vez iniciada la app, abre tu navegador e ingresa a Swagger UI:
-👉 http://localhost:8080/swagger-ui.html
+ http://localhost:8080/swagger-ui.html
 (Podrás probar los endpoints, enviar datos y ver las respuestas en tiempo real de forma gráfica).
-👨‍💻 Creado por Jesús Emmanuel Jiménez Carlos
-Ingeniero de Software & Consultor de Infraestructura TI
 
+
+
+Creado por Jesús Emmanuel Jiménez Carlos
+Ingeniero de Software & Consultor de Infraestructura TI
 Especialista en arquitectura de software, servicios en la nube y soluciones digitales a medida.
 
 
