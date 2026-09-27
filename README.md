@@ -1,20 +1,36 @@
-# 📅 BookingCore API — Domain-Driven Reservation & Scheduling Engine
+📅 BookingCore API
+El motor inteligente para gestión de reservas y citas en tiempo real
+Una solución empresarial diseñada para eliminar los encimamientos de citas, automatizar la disponibilidad y escalar cualquier negocio de servicios.
 
-[![Java 17](https://img.shields.io/badge/Java-17-orange.svg?style=flat-square&logo=openjdk)](https://www.oracle.com/java/)
-[![Spring Boot 3](https://img.shields.io/badge/Spring_Boot-3.2.3-green.svg?style=flat-square&logo=springboot)](https://spring.io/projects/spring-boot)
-[![Architecture](https://img.shields.io/badge/Architecture-DDD_%2F_Clean_Architecture-blue.svg?style=flat-square)](#architecture--design-patterns)
-[![License](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+✨ Características •
+🛠️ Cómo Funciona •
+[🔌 Endpoints](#-explora la-api) •
+🚀 Pruébalo en 2 Minutos
 
-A generic, high-performance, domain-driven RESTful scheduling engine designed to power reservation systems across industries—including healthcare clinics, legal practices, beauty salons, and SaaS platforms.
+💡 ¿Qué es BookingCore API y qué problema resuelve?
+Imaginen intentar coordinar las citas de una clínica médica, un despacho legal o una cadena de salones de belleza donde cientos de personas intentan agendar al mismo tiempo. Sin un sistema sólido, ocurren los peores dolores de cabeza de cualquier negocio: empalmes de horarios (doble reservación), agendas desorganizadas y clientes insatisfechos.
+BookingCore API es un motor central de reservaciones listo para integrarse a cualquier plataforma web o móvil. Funciona como un "cerebro automatizado" que calcula en milisegundos qué horarios están libres y asegura que jamás existan dos personas agendadas a la misma hora para el mismo especialista.
+✨ ¿Qué hace a BookingCore diferente?
+🛡️ Cero Doble Cita (Garantizado)
+Un algoritmo matemático de intersección de tiempo valida cada segundo solicitado. Si un horario ya fue tomado (incluso por un milisegundo de diferencia), el sistema lo bloquea al instante.
 
-Built with **Java 17**, **Spring Boot 3**, and **Spring Data JPA**, **BookingCore API** delivers enterprise-grade concurrency control, sub-millisecond slot conflict detection, dynamic availability calculation, and unified error handling compliant with RFC-7807 standards.
+⚡ Generación Dinámica de Horarios
+Olvídate de configurar horas a mano. La API analiza el horario del profesional, sus descansos y servicios ofrecidos para generar la lista exacta de horarios disponibles en tiempo real.
 
+🚀 Adaptable a Cualquier Industria
+Diseñado para ser agnóstico: funciona igual de bien para agendar consultas médicas, asesorías financieras, turnos de barbería o salas de juntas.
 
+📐 Código de Grado Empresarial
+Construido con Arquitectura Limpia (Clean Architecture) y Domain-Driven Design (DDD), garantizando un software fácil de mantener, probar y escalar a millones de usuarios.
 
-💡 What Problem Does BookingCore Solve?
-Building a reliable reservation system is notoriously complex. Unhandled race conditions lead to double-bookings, timezone mismatches disrupt schedules, and rigid database schemas make adapting to varied service types difficult.
-BookingCore API addresses these core challenges with:
-Zero Double-Bookings: Mathematical time-range boundary validation (Start 
+🛠️ ¿Cómo funciona por dentro? (Explicación sencilla)
+Para los apasionados de la tecnología, el proyecto está estructurado bajo los estándares más exigentes del desarrollo de software moderno:
+Plaintext
+src/main/java/com/bookingcore/
+ ├── 🎯 domain/          # El "corazón" del negocio (Reglas de citas, validación de tiempos)
+ ├── ⚙️ service/         # La lógica de procesos (Cálculo de disponibilidad en vivo)
+ └── 🌐 infrastructure/  # El puente hacia afuera (Base de datos, Controladores REST, OpenAPI)
+Validación de Intervalos (Start 
 A
 ​	
  <End 
@@ -26,125 +42,55 @@ A
  >Start 
 B
 ​	
- ) guarantees conflict-free scheduling under high concurrency.
-Dynamic Slot Generation: Calculates real-time opening slots by analyzing provider operational schedules, break intervals, buffer periods, and existing reservations.
-Multi-Tenant Scalability: Standardized domain abstractions accommodate diverse provider structures (e.g., medical specialists, consultation rooms, or service staff).
-Clear Developer UX: Fully documented OpenAPI 3 / Swagger interface with localized, structured error responses.
-🏗️ Architecture & Design Patterns
-The system adheres strictly to Clean Architecture and Domain-Driven Design (DDD) principles to promote maintainability and testability:
+ ): Algoritmo de alta velocidad para detección de colisiones de agenda.
+Control de Excepciones Estandarizado (RFC-7807): Los errores no rompen la aplicación; devuelven mensajes claros y estructurados para el equipo frontend.
+Persistencia Indexada: Consultas optimizadas a nivel de base de datos para responder en tiempo récord.
+⚙️ Tecnologías Utilizadas
+Lenguaje: Java 17 (LTS)
+Framework Principal: Spring Boot 3.2.3
+Acceso a Datos: Spring Data JPA / Hibernate
+Base de Datos: H2 Database (En memoria para pruebas rápidas)
+Documentación Viva: OpenAPI 3 & Swagger UI
+🔌 Explora la API
+La API cuenta con puntos de acceso limpios y estructurados:
+1. Consultar horarios disponibles
+GET /api/v1/availability?providerId=1&serviceId=1&date=2026-10-15
 
-src/main/java/com/bookingcore/
-├── domain/                      # Core Business Logic & Models (Framework Agnostic)
-│   ├── model/                   # Rich Domain Entities (Appointment, TimeSlot)
-│   └── exception/               # Domain-Specific Business Exceptions
-├── service/                     # Service Layer & Use Case Implementations
-│   └── impl/                    # Business Workflow Implementation
-└── infrastructure/              # External Integrations & Adapters
-    ├── config/                  # Framework & OpenAPI Configuration
-    ├── persistence/             # Spring Data JPA Repositories
-    └── web/                     # REST Controllers, DTOs & Exception Handlers
+Devuelve la lista exacta de ventanas de tiempo libres para un especialista en un día específico.
+2. Agendar una nueva cita
+POST /api/v1/appointments
 
-
-⚙️ Tech Stack & Dependencies
-Category	Technology	Purpose
-Language	Java 17 (LTS)	Modern syntax, pattern matching, and performance improvements
-Framework	Spring Boot 3.2.3	Core Application Framework & Dependency Injection
-Data Layer	Spring Data JPA / Hibernate	ORM Mapping & Transactional Security
-Database	H2 (Dev) / PostgreSQL (Prod ready)	Relational Storage with Indexed Queries
-Documentation	OpenAPI 3 (SpringDoc UI)	Interactive REST API Documentation
-Utilities	Project Lombok	Boilerplate code reduction
-🔌 API Reference & Endpoints
-1. Calculate Provider Availability
-Retrieves all open, non-overlapping time slots for a given provider, service, and date.
-URL: GET /api/v1/availability
-Query Parameters:
-providerId (long, required): Target service provider ID.
-serviceId (long, required): Service type identifier (defines duration).
-date (ISO-8601 Date, required): e.g., 2026-10-15.
-Sample Response (200 OK):
-
-
-[
-  {
-    "startTime": "2026-10-15T09:00:00",
-    "endTime": "2026-10-15T09:30:00",
-    "available": true
-  },
-  {
-    "startTime": "2026-10-15T09:30:00",
-    "endTime": "2026-10-15T10:00:00",
-    "available": true
-  }
-]
-
-
-2. Schedule an Appointment
-Reserves a time slot for a customer after validating availability and preventing collisions.
-URL: POST /api/v1/appointments
-Headers: Content-Type: application/json
-Sample Request Payload:
-
-
+Ejemplo de solicitud:
+JSON
 {
   "customerId": 101,
   "providerId": 12,
   "serviceId": 5,
   "startTime": "2026-10-15T09:00:00",
-  "notes": "Initial consultation regarding cloud migration strategy."
+  "notes": "Consultoría sobre migración a la nube."
 }
-
-
-Sample Response (201 Created):
-
-
-{
-  "id": 1,
-  "customerId": 101,
-  "providerId": 12,
-  "serviceId": 5,
-  "startTime": "2026-10-15T09:00:00",
-  "endTime": "2026-10-15T09:30:00",
-  "status": "SCHEDULED",
-  "createdAt": "2026-09-22T20:45:00"
-}
-
-
-🛠️ How to Clone & Run Locally
-Prerequisites
-JDK 17 or higher
-Apache Maven 3.8+
-Git
-Quickstart Guide
-Clone the Repository:
-
+🚀 ¿Cómo probar la aplicación en tu computadora?
+¡Probar el proyecto es sumamente sencillo! Sigue estos pasos:
+Requisitos previos
+Java 17 o superior instalado.
+Git y Apache Maven.
+Pasos para ejecutar:
+Clona este repositorio:
+Bash
 git clone [https://github.com/tu-usuario/booking-core-api.git](https://github.com/tu-usuario/booking-core-api.git)
 cd booking-core-api
-
-
-Build and Run the Application:
-
-
-mvn clean package
-mvn spring-boot:run
-
-
+Compila y ejecuta la aplicación:
 Bash
 mvn clean package
 mvn spring-boot:run
-Access Interactive Swagger Documentation:
-Open your browser and navigate to:
-http://localhost:8080/swagger-ui.html
-Access the H2 Database Console (Optional):
-URL: http://localhost:8080/h2-console
-JDBC URL: jdbc:h2:mem:bookingdb
-Username: sa
-Password: (leave blank)
-👨‍💻 Author
-Jesús Emmanuel Jiménez Carlos
-Software Engineer & IT Infrastructure Consultant
-Specializations: Cloud Infrastructure, Custom Software Development, and Systems Architecture.
+¡Interactúa con la API visualmente!
+Una vez iniciada la app, abre tu navegador e ingresa a Swagger UI:
+👉 http://localhost:8080/swagger-ui.html
+(Podrás probar los endpoints, enviar datos y ver las respuestas en tiempo real de forma gráfica).
+👨‍💻 Creado por Jesús Emmanuel Jiménez Carlos
+Ingeniero de Software & Consultor de Infraestructura TI
 
-
+Especialista en arquitectura de software, servicios en la nube y soluciones digitales a medida.
 
 
 
