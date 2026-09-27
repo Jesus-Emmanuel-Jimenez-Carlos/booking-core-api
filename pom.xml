@@ -1,0 +1,72 @@
+4.0.0
+
+    
+        org.springframework.boot
+        spring-boot-starter-parent
+        3.2.3
+        
+    
+
+    com.bookingcore
+    booking-core-api
+    1.0.0
+    booking-core-api
+    Enterprise Generic Scheduling and Reservation Engine
+
+    
+        17
+        2.3.0
+    
+
+    
+        
+        
+            org.springframework.boot
+            spring-boot-starter-web
+        
+        
+            org.springframework.boot
+            spring-boot-starter-data-jpa
+        
+        
+            org.springframework.boot
+            spring-boot-starter-validation
+        
+
+        
+        
+            com.h2database
+            h2
+            runtime
+        
+
+        
+        
+            org.springdoc
+            springdoc-openapi-starter-webmvc-ui
+            ${springdoc.version}
+        
+
+        
+        
+            org.projectlombok
+            lombok
+            true
+        
+        
+            org.springframework.boot
+            spring-boot-starter-test
+            test
+        
+    
+
+    
+        
+            
+                org.springframework.boot
+                spring-boot-maven-plugin
+                
+                    
+                        
+                            org.projectlombok
+                            lombok
